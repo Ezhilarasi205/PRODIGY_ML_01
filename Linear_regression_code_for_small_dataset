@@ -1,0 +1,23 @@
+import pandas as pd
+df = pd.read_csv('https://raw.githubusercontent.com/ameenmanna8824/DATASETS/main/areavsprices.csv')
+df
+import matplotlib.pyplot as plt
+#plt.scatter(x-axis,y-axis)
+plt.scatter(df['Area'],df['Prices'])
+plt.title('Area vs Prices')
+plt.xlabel('Area')
+plt.ylabel('Prices')
+x = df.iloc[:,0:1].values
+x
+y = df.iloc[:,1].values
+y
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(x,y)
+y_pred = model.predict(x) 
+y_pred
+C = model.intercept_
+C
+plt.scatter(x,y) #ACTUAL VALUE
+plt.plot(x,y_pred,c = 'orange') #PREDICTED VALUE
+plt.title('BEST FIT LINE')
